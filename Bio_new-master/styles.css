@@ -20,7 +20,8 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-.people-controls, .biorhythm-controls {
+.people-controls,
+.biorhythm-controls {
   text-align: left;
 }
 
@@ -49,7 +50,8 @@ label {
   color: #e0e0e0;
 }
 
-input[type="date"], input[type="number"] {
+input[type="date"],
+input[type="number"] {
   padding: 0.5em;
   font-size: 1em;
   margin-left: 0.5em;
@@ -82,7 +84,7 @@ canvas {
   font-size: 14px;
   pointer-events: none;
   z-index: 100;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 /* Стили для кастомных чекбоксов */
@@ -129,7 +131,7 @@ canvas {
   box-shadow: 0 0 8px rgba(213, 162, 255, 0.4);
 }
 
-.people-controls .checkboxes input:checked ~ .checkmark {
+.people-controls .checkboxes input:checked~.checkmark {
   background-color: #444;
   border-color: #d5a2ff;
 }
@@ -178,7 +180,7 @@ canvas {
   transform: scale(1.1);
 }
 
-.biorhythm-controls .checkboxes input:checked ~ .checkmark {
+.biorhythm-controls .checkboxes input:checked~.checkmark {
   background-color: #444;
   border-color: #d5a2ff;
 }
@@ -197,8 +199,8 @@ canvas {
   transform: translate(-50%, -60%) rotate(45deg);
 }
 
-.people-controls .checkboxes input:checked ~ .checkmark:after,
-.biorhythm-controls .checkboxes input:checked ~ .checkmark:after {
+.people-controls .checkboxes input:checked~.checkmark:after,
+.biorhythm-controls .checkboxes input:checked~.checkmark:after {
   display: block;
 }
 
@@ -238,9 +240,21 @@ canvas {
 
 /* Анимация встряски */
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-3px); }
-  40%, 80% { transform: translateX(3px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20%,
+  60% {
+    transform: translateX(-3px);
+  }
+
+  40%,
+  80% {
+    transform: translateX(3px);
+  }
 }
 
 .shake {
@@ -252,51 +266,51 @@ canvas {
     padding: 1rem;
     font-size: 14px;
   }
-  
+
   h1 {
     font-size: 1.5em;
   }
-  
+
   .controls {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .checkboxes {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.3rem;
   }
-  
+
   .biorhythm-controls .checkboxes {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   label {
     margin: 0.5em 0;
   }
-  
-  input[type="date"], 
+
+  input[type="date"],
   input[type="number"] {
     margin-left: 0;
     margin-top: 0.3em;
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   .people-controls {
     position: relative;
   }
-  
+
   .clear-btn {
     position: absolute;
     right: 0;
     top: 0;
     margin-left: 0;
   }
-  
+
   .people-controls .checkboxes {
     margin-right: 2rem;
   }
@@ -307,9 +321,136 @@ canvas {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .tooltip {
     font-size: 12px;
     max-width: 200px;
   }
+}
+
+.recommend-btn {
+  background-color: #d5a2ff;
+  color: #1e1e2f;
+  border: none;
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.recommend-btn:hover {
+  background-color: #f0e0ff;
+}
+
+/* Модалка */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #2c2c3e;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  text-align: left;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+#recommendation-text {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.recommend-btn {
+  background-color: #d5a2ff;
+  color: #1e1e2f;
+  border: none;
+  padding: 0.7em 1.5em;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recommend-btn:hover {
+  background-color: #f0e0ff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #2c2c3e;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #fff;
+  max-width: 700px;
+  width: 90%;
+  position: relative;
+  text-align: left;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+#correlation-text p,
+#personal-text p {
+  margin: 0.7em 0;
+  line-height: 1.5;
 }
