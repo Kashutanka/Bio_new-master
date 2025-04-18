@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css">
+  <title>Биоритмы</title>
+</head>
+<body>
+  <h1>Биоритмы</h1>
+  <label>На какую дату показать биоритмы:
+      <input type="date" id="target-date" />
+    </label>
+    <label>
+        Сколько дней показать:
+        <input type="number" id="range-days" min="1" value="5">
+    </label>
+    <div class="controls">
+        <div class="biorhythm-controls">
+            <div class="checkboxes">
+                <label>
+                    <input type="checkbox" class="biorhythm-type" value="physical" checked>
+                    <span class="checkmark"></span>
+                Физический
+              </label>
+              <label>
+                <input type="checkbox" class="biorhythm-type" value="emotional" checked>
+                <span class="checkmark"></span>
+                Эмоциональный
+              </label>
+              <label>
+                  <input type="checkbox" class="biorhythm-type" value="intellectual" checked>
+                  <span class="checkmark"></span>
+                  Интеллектуальный
+                </label>
+            </div>
+        </div>
+        <div class="people-controls">
+            <div class="checkboxes" id="people-checkboxes"></div>
+            <button id="clear-people" class="clear-btn" title="Сбросить всех">
+           <svg viewBox="0 0 24 24" width="18" height="18">
+             <path fill="currentColor" d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
+           </svg>
+         </button>
+        </div>
+    </div>
+    <canvas id="biorhythm-chart"></canvas>
+  <script src="./script.js"></script>
+</body>
+</html>

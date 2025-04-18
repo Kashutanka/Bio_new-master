@@ -1,0 +1,315 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  padding: 2rem;
+  color: #f0f0f0;
+  background-color: #1e1e2f;
+}
+
+h1 {
+  margin-bottom: 0.2em;
+  font-size: 2em;
+  color: #d5a2ff;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.people-controls, .biorhythm-controls {
+  text-align: left;
+}
+
+.checkboxes {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 1em 0;
+  font-weight: 500;
+  color: #e0e0e0;
+}
+
+input[type="date"], input[type="number"] {
+  padding: 0.5em;
+  font-size: 1em;
+  margin-left: 0.5em;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #2c2c3e;
+  color: #ffffff;
+}
+
+canvas {
+  width: 100%;
+  height: 35rem;
+  max-width: 100rem;
+  margin: 1.5rem auto;
+  margin-top: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid #333;
+  background-color: #292940;
+  display: block;
+  box-sizing: border-box;
+}
+
+.tooltip {
+  position: absolute;
+  background: #222;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+/* Стили для кастомных чекбоксов */
+.people-controls .checkboxes {
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.people-controls .checkboxes label {
+  position: relative;
+  padding-left: 2rem;
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.people-controls .checkboxes label:hover {
+  color: #d5a2ff;
+}
+
+.people-controls .checkboxes input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.people-controls .checkboxes .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-color: #2c2c3e;
+  border: 2px solid #d5a2ff;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.people-controls .checkboxes label:hover .checkmark {
+  border-color: #f0f0f0;
+  box-shadow: 0 0 8px rgba(213, 162, 255, 0.4);
+}
+
+.people-controls .checkboxes input:checked ~ .checkmark {
+  background-color: #444;
+  border-color: #d5a2ff;
+}
+
+/* Стили для чекбоксов биоритмов */
+.biorhythm-controls .checkboxes {
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.biorhythm-controls .checkboxes label {
+  position: relative;
+  padding-left: 2.2rem;
+  margin: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.biorhythm-controls .checkboxes label:hover {
+  color: #d5a2ff;
+}
+
+.biorhythm-controls input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.biorhythm-controls .checkboxes .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.2rem;
+  width: 1.2rem;
+  background-color: #2c2c3e;
+  border: 2px solid #d5a2ff;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.biorhythm-controls .checkboxes label:hover .checkmark {
+  box-shadow: 0 0 8px rgba(213, 162, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.biorhythm-controls .checkboxes input:checked ~ .checkmark {
+  background-color: #444;
+  border-color: #d5a2ff;
+}
+
+/* Общие стили для галочек */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  width: 0.4rem;
+  height: 0.8rem;
+  border: solid #d5a2ff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.people-controls .checkboxes input:checked ~ .checkmark:after,
+.biorhythm-controls .checkboxes input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.person-name {
+  transition: all 0.3s ease;
+}
+
+.people-controls .checkboxes label:hover .person-name {
+  text-shadow: 0 0 8px currentColor;
+  transform: scale(1.05);
+}
+
+.people-controls .checkboxes label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.clear-btn {
+  margin-left: 8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d5a2ff;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.clear-btn:hover {
+  color: #f0f0f0;
+  background-color: #d5a2ff33;
+}
+
+.clear-btn svg {
+  vertical-align: middle;
+}
+
+/* Анимация встряски */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-3px); }
+  40%, 80% { transform: translateX(3px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .checkboxes {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .biorhythm-controls .checkboxes {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  label {
+    margin: 0.5em 0;
+  }
+  
+  input[type="date"], 
+  input[type="number"] {
+    margin-left: 0;
+    margin-top: 0.3em;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .people-controls {
+    position: relative;
+  }
+  
+  .clear-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-left: 0;
+  }
+  
+  .people-controls .checkboxes {
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .biorhythm-controls .checkboxes {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .tooltip {
+    font-size: 12px;
+    max-width: 200px;
+  }
+}
